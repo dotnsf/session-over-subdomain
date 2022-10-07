@@ -104,7 +104,7 @@ app.get( '/*', function( req, res, next ){
     //. static files
     next();
   }else{
-    console.log( req.session );
+    console.log( 0, req.session );
     var old_user = null;
     var old_host = null;
     if( req.session ){
@@ -123,7 +123,7 @@ app.get( '/*', function( req, res, next ){
 
     req.session.ghac_user = user; 
     req.session.ghac_host = host; 
-    console.log( req.session );
+    console.log( 1, req.session );
     req.session.save( function( err ){
       if( err ){
         res.contentType( 'application/json; charset=utf-8' );
