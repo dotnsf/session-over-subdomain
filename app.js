@@ -2,7 +2,7 @@
 var express = require( 'express' ),
     cookieParser = require( 'cookie-parser' ),
     session = require( 'express-session' ),
-//    ejs = require( 'ejs' ),
+    ejs = require( 'ejs' ),
     request = require( 'request' ),
     app = express();
 
@@ -35,10 +35,8 @@ app.use( function( req, res, next ){
   next();
 });
 
-/*
 app.set( 'views', __dirname + '/views' );
 app.set( 'view engine', 'ejs' );
-*/
 
 var client_id = 'CLIENT_ID' in process.env ? process.env.CLIENT_ID : '';
 var client_secret = 'CLIENT_SECRET' in process.env ? process.env.CLIENT_SECRET : '';
@@ -125,15 +123,14 @@ app.get( '/*', function( req, res, next ){
 
     req.session.ghac_user = user; 
     req.session.ghac_host = host; 
+    console.log( req.session );
     req.session.save( function( err ){
       if( err ){
         res.contentType( 'application/json; charset=utf-8' );
         res.write( JSON.stringify( { status: false, old_host: old_host, old_user: old_user, host: host, user: user, session: req.session, error: err }, null, 2 ) );
         res.end();
       }else{
-        res.contentType( 'application/json; charset=utf-8' );
-        res.write( JSON.stringify( { status: true, old_host: old_host, old_user: old_user, host: host, user: user, session: req.session }, null, 2 ) );
-        res.end();
+        res.render( 'index', {} );
       }
     });
   }
