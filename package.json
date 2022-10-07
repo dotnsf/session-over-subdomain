@@ -1,0 +1,27 @@
+{
+    "name": "session-over-subdomain",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node app.js",
+        "test": "mocha --exit api.spec.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.0",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.2",
+        "ejs": "^3.1.8",
+        "express": "^4.18.1",
+        "express-session": "^1.17.3",
+        "request": "^2.88.2"
+    },
+    "repository": {},
+    "engines": {
+        "node": "14.x"
+    },
+    "devDependencies": {
+        "chai": "^4.3.6",
+        "mocha": "^10.0.0",
+        "supertest": "^6.2.4"
+    }
+}
